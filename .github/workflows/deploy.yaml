@@ -1,0 +1,49 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build with Maven
+        run: mvn clean install
+
+      - name: Extract Application Version and Name from pom.xml
+        id: extract-info
+        run: |
+          APP_NAME=$(mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout)
+          APP_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+          echo "APP_NAME=$APP_NAME" >> $GITHUB_ENV
+          echo "APP_VERSION=$APP_VERSION" >> $GITHUB_ENV
+
+      - name: Verify .jar file existence
+        run: |
+          ls -l target/
+
+      - name: Build Docker Image
+        run: |
+          docker build --build-arg APP_NAME=${{ env.APP_NAME }} --build-arg APP_VERSION=${{ env.APP_VERSION }} -t elvinhndrwn16/${{ env.APP_NAME }}:${{ env.APP_VERSION }} .
+
+      - name: Login to Docker Registry
+        run: docker login -u elvinhndrwn16 -p ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Push Docker Image
+        run: docker push elvinhndrwn16/${{ env.APP_NAME }}:${{ env.APP_VERSION }}
+
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@master
+        with:
+          host: 202.10.41.5
+          username: root
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            docker stop $(docker ps -a -q) || true
+            docker rm $(docker ps -a -q) || true
+            docker image prune -f
+            docker pull elvinhndrwn16/${{ env.APP_NAME }}:${{ env.APP_VERSION }}
+            docker run -d --name ${{ env.APP_NAME }}-container -p 8080:8080 elvinhndrwn16/${{ env.APP_NAME }}:${{ env.APP_VERSION }}

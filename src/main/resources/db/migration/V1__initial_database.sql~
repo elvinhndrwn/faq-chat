@@ -1,0 +1,166 @@
+-- public.bupati definition
+
+-- Drop table
+
+-- DROP TABLE public.bupati;
+
+CREATE TABLE public.bupati (
+	id serial4 NOT NULL,
+	nama_bupati varchar NULL,
+	periode varchar NULL
+);
+
+-- Permissions
+
+ALTER TABLE public.bupati OWNER TO chat_bot_kab_bantul;
+GRANT ALL ON TABLE public.bupati TO chat_bot_kab_bantul;
+
+-- public.kecamatan definition
+
+-- Drop table
+
+-- DROP TABLE public.kecamatan;
+
+CREATE TABLE public.kecamatan (
+	id serial4 NOT NULL,
+	nama_kecamatan varchar NULL
+);
+
+-- Permissions
+
+ALTER TABLE public.kecamatan OWNER TO chat_bot_kab_bantul;
+GRANT ALL ON TABLE public.kecamatan TO chat_bot_kab_bantul;
+
+-- public.kelurahan definition
+
+-- Drop table
+
+-- DROP TABLE public.kelurahan;
+
+CREATE TABLE public.kelurahan (
+	id serial4 NOT NULL,
+	nama_kelurahan varchar NULL,
+	id_kecamatan int4 NOT NULL
+);
+
+-- Permissions
+
+ALTER TABLE public.kelurahan OWNER TO chat_bot_kab_bantul;
+GRANT ALL ON TABLE public.kelurahan TO chat_bot_kab_bantul;
+
+-- public.dusun definition
+
+-- Drop table
+
+-- DROP TABLE public.dusun;
+
+CREATE TABLE public.dusun (
+	id serial4 NOT NULL,
+	nama_dusun varchar NULL,
+	id_kelurahan int4 NOT NULL
+);
+
+-- Permissions
+
+ALTER TABLE public.dusun OWNER TO chat_bot_kab_bantul;
+GRANT ALL ON TABLE public.dusun TO chat_bot_kab_bantul;
+
+-- Kecamatan
+INSERT INTO public.kecamatan (id, nama_kecamatan) VALUES(1, 'Srandakan');
+INSERT INTO public.kecamatan (id, nama_kecamatan) VALUES(2, 'Sanden');
+INSERT INTO public.kecamatan (id, nama_kecamatan) VALUES(3, 'Kretek');
+INSERT INTO public.kecamatan (id, nama_kecamatan) VALUES(4, 'Pundong');
+INSERT INTO public.kecamatan (id, nama_kecamatan) VALUES(6, 'Pandak');
+INSERT INTO public.kecamatan (id, nama_kecamatan) VALUES(7, 'Pajangan');
+INSERT INTO public.kecamatan (id, nama_kecamatan) VALUES(8, 'Bantul');
+INSERT INTO public.kecamatan (id, nama_kecamatan) VALUES(9, 'Jetis');
+INSERT INTO public.kecamatan (id, nama_kecamatan) VALUES(10, 'Imogiri');
+INSERT INTO public.kecamatan (id, nama_kecamatan) VALUES(11, 'Dlingo');
+INSERT INTO public.kecamatan (id, nama_kecamatan) VALUES(12, 'BANGUNTAPAN');
+INSERT INTO public.kecamatan (id, nama_kecamatan) VALUES(13, 'PLERET');
+INSERT INTO public.kecamatan (id, nama_kecamatan) VALUES(14, 'PIYUNGAN');
+INSERT INTO public.kecamatan (id, nama_kecamatan) VALUES(15, 'SEWON');
+INSERT INTO public.kecamatan (id, nama_kecamatan) VALUES(16, 'KASIHAN');
+INSERT INTO public.kecamatan (id, nama_kecamatan) VALUES(17, 'SEDAYU');
+INSERT INTO public.kecamatan (id, nama_kecamatan) VALUES(5, 'Bambanglipurro');
+
+-- Kelurahan
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(39, 'Poncosari', 1);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(40, 'Trimurti', 1);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(41, 'Gadingsari', 2);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(42, 'Gadingharjo', 2);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(43, 'Srigading', 2);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(44, 'Murtigading', 2);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(45, 'Tirtomulyo', 3);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(46, 'Parangtritis', 3);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(47, 'Donotirto', 3);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(48, 'Tirtosari', 3);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(49, 'Tirtohargo', 3);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(50, 'Seloharjo', 4);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(51, 'Panjangrejo', 4);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(52, 'Srihardono', 4);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(53, 'Sidomulyo', 5);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(54, 'Mulyodadi', 5);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(55, 'Sumbermulyo', 5);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(56, 'Caturharjo', 6);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(57, 'Triharjo', 6);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(58, 'Gilangharjo', 6);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(59, 'Wijirejo', 6);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(60, 'Triwidadi', 7);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(61, 'Sendangsari', 7);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(62, 'Guwosari', 7);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(63, 'Palbapang', 8);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(64, 'Ringinharjo', 8);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(65, 'Bantul', 8);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(66, 'Trirenggo', 8);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(67, 'Sabdodadi', 8);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(68, 'Patalan', 9);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(69, 'Canden', 9);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(70, 'Sumberagung', 9);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(71, 'Trimulyo', 9);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(72, 'Selopamioro', 10);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(73, 'Sriharjo', 10);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(74, 'Wukirsari', 10);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(75, 'Kebonagung', 10);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(76, 'Karangtengah', 10);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(77, 'Girirejo', 10);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(78, 'Karangtalun', 10);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(79, 'Imogiri', 10);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(80, 'Mangunan', 11);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(81, 'Muntuk', 11);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(82, 'Dlingo', 11);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(83, 'Temuwuh', 11);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(84, 'Terong', 11);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(85, 'Jatimulyo', 11);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(86, 'BATURETNO', 12);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(87, 'BANGUNTAPAN', 12);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(88, 'JAGALAN', 12);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(89, 'SINGOSAREN', 12);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(90, 'JAMBIDAN', 12);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(91, 'POTORONO', 12);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(92, 'TAMANAN', 12);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(93, 'WIROKERTEN', 12);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(94, 'WONOKROMO', 13);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(95, 'PLERET', 13);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(96, 'SEGOROYOSO', 13);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(97, 'BAWURAN', 13);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(98, 'WONOLELO', 13);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(99, 'SITIMULYO', 14);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(100, 'SRIMULYO', 14);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(101, 'SRIMARTANI', 14);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(86, 'PENDOWOHARJO', 15);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(87, 'TIMBULHARJO', 15);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(88, 'BANGUNHARJO', 15);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(89, 'PANGGUNGHARJO', 15);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(90, 'BANGUNJIWO', 16);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(91, 'TIRTONIRMOLO', 16);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(92, 'TAMANTIRTO', 16);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(93, 'NGESTIHARJO', 16);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(94, 'ARGODADI', 17);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(95, 'ARGOREJO', 17);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(96, 'ARGOSARI', 17);
+INSERT INTO public.kelurahan (id, nama_kelurahan, id_kecamatan) VALUES(97, 'ARGOMULYO', 17);
+
+-- Dusun
+
+

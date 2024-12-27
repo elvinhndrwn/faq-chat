@@ -1,0 +1,22 @@
+package com.playground.chatbot_kab_bantul.constant;
+
+import lombok.Getter;
+
+import java.util.Arrays;
+
+@Getter
+@SuppressWarnings("all")
+public enum Intent {
+    GET_COUNT("get_count"),
+    GET_NAME("get_name"),
+    GET_LIST_DUSUN("get_list_dusun"),
+    GET_LIST_KELURAHAN("get_list_kelurahan"),
+    GET_LIST_KECAMATAN("get_list_kecamatan"),
+    ;
+
+    private final String name;
+
+    Intent(String name) {
+        this.name = name;
+    }
+}
