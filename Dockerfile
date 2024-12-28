@@ -9,4 +9,4 @@ ARG APP_VERSION
 COPY target/${APP_NAME}-${APP_VERSION}.jar app.jar
 
 # Menjalankan aplikasi Spring Boot dengan pengaturan JVM
-ENTRYPOINT ["java", "-Xms256m", "-Xmx512m", "-XX:MetaspaceSize=256m", "-XX:MaxMetaspaceSize=512m", "-jar", "/app.jar"]
+ENTRYPOINT ["java", "-jar", "/app.jar"]
