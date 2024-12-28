@@ -93,6 +93,7 @@ public class DataModelServiceImpl implements DataModelService {
                         }
                         result = builder.toString();
                     }
+                    break;
                 case "dusun":
                     dusun = dusunRepository.findDusunByLocation(location0);
                     if(!dusun.isEmpty()){
@@ -103,6 +104,7 @@ public class DataModelServiceImpl implements DataModelService {
                         }
                         result = builder.toString();
                     }
+                    break;
                 case "kecamatan":
                     kecamatan = kecamatanRepository.findKecamatanByLocation();
                     if(!kecamatan.isEmpty()){
@@ -113,6 +115,10 @@ public class DataModelServiceImpl implements DataModelService {
                         }
                         result = builder.toString();
                     }
+                    break;
+                default:
+                    result = "<none>";
+                    break;
 
             }
 
