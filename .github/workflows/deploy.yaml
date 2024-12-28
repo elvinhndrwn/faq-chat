@@ -38,12 +38,22 @@ jobs:
       - name: Deploy to VPS
         uses: appleboy/ssh-action@master
         with:
-          host: 202.10.41.5
+          host: 202.10.41.5  # Gantilah dengan IP VPS Anda
           username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            # Hentikan container Spring Boot sebelumnya jika ada
             docker stop $(docker ps -a -q -f name=${{ env.APP_NAME }}) || true
             docker rm $(docker ps -a -q -f name=${{ env.APP_NAME }}) || true
             docker image prune -f
+
+            # Tarik image terbaru dari Docker Hub
             docker pull elvinhndrwn16/${{ env.APP_NAME }}:${{ env.APP_VERSION }}
-            docker run -d --name ${{ env.APP_NAME }}-container -p 8080:8080 elvinhndrwn16/${{ env.APP_NAME }}:${{ env.APP_VERSION }}
+
+            # Jalankan Spring Boot di container Docker
+            docker run -d --name ${{ env.APP_NAME }}-container \
+              -p 8080:8080 \
+              -e SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/mydatabase \
+              -e SPRING_DATASOURCE_USERNAME=root \
+              -e SPRING_DATASOURCE_PASSWORD=rootpassword \
+              elvinhndrwn16/${{ env.APP_NAME }}:${{ env.APP_VERSION }}
