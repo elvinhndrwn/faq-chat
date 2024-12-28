@@ -52,10 +52,9 @@ jobs:
 
             # Jalankan Spring Boot di container Docker
             docker run -d --name ${{ env.APP_NAME }}-container \
-            --network db-chat-bot-bantul_mynetwork \ 
-            -p 8080:8080 \
-            -e SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/mydatabase \
-            -e SPRING_DATASOURCE_USERNAME=root \
-            -e SPRING_DATASOURCE_PASSWORD=rootpassword \
-            elvinhndrwn16/${{ env.APP_NAME }}:${{ env.APP_VERSION }}
-
+              -p 8080:8080 \
+              -e SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/mydatabase \
+              -e SPRING_DATASOURCE_USERNAME=root \
+              -e SPRING_DATASOURCE_PASSWORD=rootpassword \
+              elvinhndrwn16/${{ env.APP_NAME }}:${{ env.APP_VERSION }}
+            -- network db-chat-bot-bantul_mynetwork
